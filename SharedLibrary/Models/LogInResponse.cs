@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace UppgiftWebApi.Models
+namespace SharedLibrary.Models
 {
     public class LogInResponse
     {
@@ -18,3 +17,4 @@ namespace UppgiftWebApi.Models
         public string AccessToken { get; set; }
     }
 }
+

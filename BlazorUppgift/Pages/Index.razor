@@ -1,0 +1,52 @@
+﻿@page "/"
+
+<h2 class="mb-5">Registration form</h2>
+
+<EditForm Model="register" OnSubmit="OnSubmitAsync">
+    <div class="my-5">
+        <div class="container">
+
+            <h3 class="title">Administrator</h3>    
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <InputText type="text" class="form-control" @bind-Value="register.FirstName" placeholder="Firstname" id="firstname"  />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <InputText type="text" class="form-control" @bind-Value="register.LastName" placeholder="Lastname" id="lastname"  />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <InputText type="email" class="form-control" @bind-Value="register.Email" placeholder="Emailadress" id="email" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <InputText type="password" class="form-control" @bind-Value="register.Password" placeholder="Password" id="password"  />                 
+                    </div>
+                </div>
+                <button class="btn btn-dark btn-block" type="submit">Submit</button>           
+        </div>
+    </div>
+</EditForm>
+
+
+
+
+@code {
+    private Register register;
+
+
+    private async Task OnSubmitAsync()
+    {
+        var response = await Http.PostAsJsonAsync<Register>("https://localhost:44311/api/Admins/register", register);
+        register = new Register();
+
+    }
+
+    protected override void OnInitialized()
+    {
+        register = new Register();
+    }
+
+
+
+}
